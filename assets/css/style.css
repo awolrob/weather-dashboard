@@ -3,7 +3,7 @@
   --secondary: white;
   --tertiary: white;
   --light-dark: #5AA2EA;
-  --dark: blue;
+  --dark: black;
   --border-radius: .5rem;
 }
 
@@ -58,7 +58,7 @@ p {
 }
 
 .btn:hover {
-  color:darkgrey;
+  color: darkgrey;
   /* background-color: var(--tertiary); */
   transform: translate(0, 0);
   box-shadow: 2px 2px var(--primary);
@@ -85,7 +85,7 @@ p {
 }
 
 .btn-back:hover {
-  color:whitesmoke;
+  color: whitesmoke;
   /* background-color: var(--tertiary); */
   transform: translate(0, 0);
   box-shadow: 2px 2px var(--primary);
@@ -183,7 +183,7 @@ p {
 
 .form-input {
   width: 100%;
-  padding: 4%;
+  padding: 2%;
   margin: 16px 0;
   font-size: 2rem;
   border: 2px solid darkgrey;
