@@ -15,40 +15,104 @@
 <body class="flex-column min-100-vh">
   <header class="hero">
     <!-- <h1 class="app-title"><i class="fab fa-github fa-fw" style="color: red;"></i> Git it Done!</h1> -->
-    <h1 class="app-title"><i class="fad fa-sun fa-fw fa-spin" style="color: yellow;"></i> Weather Dashboard</h1>
+    <h1 class="app-title"><i class="fad fa-sun fa-fw" style="color: yellow;"></i> Weather Dashboard</h1>
     <!-- <p>Search for a GitHub user or click on a language to see a list of repositories and how many open issues they have! -->
     <!-- <h1 class="app-title"><i class="fab fa-github fa-fw" style="color: red;"></i> Git it Done!</h1> -->
     <!-- </p> -->
   </header>
 
 
-  <main class="flex-row justify-space-between">
+  <main class="flex-row justify-space-around">
     <div class="col-12 col-md-4">
-      <div class="card">
-        <h3 class="card-header text-uppercase">Search By User</h3>
-        <form id="user-form" class="card-body">
-          <label class="form-label" for="username">Username</label>
-          <input name="username" id="username" type="text" autofocus="true" class="form-input" />
-          <button type="submit" class="btn">Get User <i class='far fa-biohazard fa-pulse'></i></button>
-        </form>
-      </div>
 
-      <div class="card">
-        <h3 class="card-header text-uppercase">Search By Topic</h3>
+      <h3 class="card-header">Search for a City:</h3>
+      <form id="user-form" class="card-body">
+        <label class="form-label" for="username"></label>
+        <input name="username" id="username" type="text" autofocus="true" class="form-input" placeholder="San Diego" />
+        <button type="submit" class="btn">Search <i class='fad fa-sun fa-pulse fa-spinner'
+            style="color: yellow;"></i></button>
+      </form>
+
+      <div class="col">
         <div id="language-buttons" class="card-body">
-          <button data-language="javascript" class="btn">JavaScript</button>
-          <button data-language="html" class="btn">HTML</button>
-          <button data-language="css" class="btn">CSS</button>
+          <button data-language="javascript" class="btn-back">JavaScript</button>
+          <button data-language="html" class="btn-back">HTML</button>
+          <button data-language="css" class="btn-back">CSS</button>
         </div>
       </div>
     </div>
 
     <div class="col-12 col-md-8">
       <h2 class="subtitle">Showing Repositories for: <span id="repo-search-term"></span></h2>
-      <div id="repos-container" class="list-group">
+      <div class="flex-row">
+        <div class="card" style="width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+          </div>
+        </div>
 
+        <div class="flex-row">
+          <div class="card" style="width: 20%;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+          <div class="card" style="width: 20%;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+          <div class="card" style="width: 20%;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+          <div class="card" style="width: 20%;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+          <div class="card" style="width: 20%;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
   </main>
 
   <script src="./assets/js/homepage.js"></script>
