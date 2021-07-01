@@ -22,14 +22,14 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 900;
+  /* font-weight: 900; */
   margin: 0;
-  color: var(--dark);
-  line-height: 1.25;
+  /* color: var(--dark); */
+  /* line-height: 1.25; */
 }
 
 main {
-  margin: 20px auto;
+  /* margin: 20px auto; */
   width: 94%;
 }
 
@@ -153,7 +153,16 @@ p {
 
 .card {
   margin: 8px 0 20px 0;
-  border-top: 3px solid darkgrey;
+  border: 3px solid darkgrey;
+  /* border-radius: var(--border-radius); */
+}
+
+.sm-card {
+  /* margin: 8px 0 20px 0; */
+  border: 3px solid #33475A;
+  background-color: #33475A;
+  color: white;
+
   /* border-radius: var(--border-radius); */
 }
 
@@ -211,6 +220,11 @@ p {
 .flex-row {
   display: flex;
   flex-wrap: wrap;
+  padding: .5em;
+}
+
+.pd-rt {
+  padding-right: 1em;
 }
 
 .flex-column {
@@ -392,7 +406,8 @@ p {
     flex: 0 0 calc(100% * 1 / 12 - 2%);
   }
   .col-lg-2 {
-    flex: 0 0 calc(100% * 2 / 12 - 2%);
+    /* change to 10 by Rob */
+    flex: 0 0 calc(100% * 2 / 10 - 2%);
   }
   .col-lg-3 {
     flex: 0 0 calc(100% * 3 / 12 - 2%);
