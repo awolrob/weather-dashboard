@@ -41,16 +41,16 @@
       <div class="flex-row">
         <div class="card col-12">
           <div class="card-body">
-            <h1 class="card-title" id="curCityDate">City Name (and date)</h1>
-            <img id="curIcon" src='http://openweathermap.org/img/wn/10d@2x.png' />
-            <p class="card-text" id="curTemp">Temp: </p>
-            <p class="card-text" id="curWind">Wind: </p>
-            <p class="card-text" id="curHum">Humidity: </p>
-            <div class="col-1">
-              <p class="card-text" id="curUV">UV Index:</p>
+            <h1 class="card-title" id="curCityDate"></h1>
+            <img id="curIcon"  />
+            <p class="card-text" id="curTemp"></p>
+            <p class="card-text" id="curWind"></p>
+            <p class="card-text" id="curHum"></p>
+            <div class="col">
+              <p class="card-text" id="curUV"></p>
             </div>
             <div class="col-11">
-              <p id="uvFormat" class="col-1">99</p>
+              <p id="uvFormat">99</p>
             </div>
           </div>
         </div>
@@ -58,9 +58,9 @@
           <h1>5-Day Forecast:</h1>
         </div>
         <div class="col-12">
-          <div class="flex-row  justify-space-between">
-            <div class="sm-card col-lg-2">
-              <div class="card-body">
+          <div id="5-day" class="flex-row  justify-space-between">
+            <!-- <div class="sm-card col-lg-2">
+              <div class="card-body" id="card-body-0">
                 <h2 class="card-title">6/30/2021</h2>
                 <p class="card-text"><i class='fad fa-sun fa-pulse fa-spinner' style="color: green;"></i></p>
                 <p class="card-text">Temp: </p>
@@ -103,12 +103,12 @@
                 <p class="card-text">Wind: </p>
                 <p class="card-text">Humidity: </p>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
   </main>
-
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="./assets/js/scripts.js"></script>
 </body>
 

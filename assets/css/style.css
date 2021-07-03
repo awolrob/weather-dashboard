@@ -12,8 +12,8 @@
 }
 
 img {
-  height: 30px;
-  width: 60px;
+  /* height: 30px; */
+  /* width: 60px; */
   object-fit: cover
 }
 
@@ -23,7 +23,6 @@ img {
 
 #uvFormat {
   display: inline-block;
-  background-color: darkred;
   color: white;
   width: 40px;
   font-size: 1em;
@@ -32,11 +31,22 @@ img {
   border-radius: 10%;
 }
 
-}
-
 #uvFormat p {
   margin: 0;
 }
+
+.favorable {
+  background-color: #83C88B
+}
+
+.moderate {
+  background-color: #FFDC01;
+}
+
+.severe {
+  background-color: #D83484;
+}
+
 
 body {
   /* background-color: var(--primary); */

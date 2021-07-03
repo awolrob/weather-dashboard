@@ -9,7 +9,8 @@ var curCond = {
   curTemp: document.getElementById("curTemp"),
   curWind: document.getElementById("curWind"),
   curHum: document.getElementById("curHum"),
-  curUV: document.getElementById("uvFormat")
+  curUV: document.getElementById("curUV"),
+  uvFormat: document.getElementById("uvFormat")
 }
 var formSubmitHandler = function (event) {
   // prevent page from refreshing
@@ -87,15 +88,36 @@ var loadUI = function (current, forecast) {
   curCond.curTemp.innerHTML = "Temp: " + current.temp + '°F';
   curCond.curWind.innerHTML = "Wind: " + current.wind_speed + " MPH";
   curCond.curHum.innerHTML = "Humidity: " + current.humidity + " %";
-  curCond.curUV.innerHTML = current.uvi;
+  curCond.curUV.innerHTML = "UV Index: ";
+  curCond.uvFormat.innerHTML = current.uvi;
+  curCond.uvFormat.classList.remove("favorable", "moderate", "severe");
+
+  for (i = 0; i < 5; i++) {
+    console.log(forecast[i]);
+    $("#5-day").append($("<div>").addClass("sm-card col-lg-2").attr("id", "card-body-" + i));
+    $("#card-body-" + i).append($("<h2>").addClass("card-title").text(Cur_Unix_Date(forecast[i].dt)));
+    $("#card-body-" + i).append($("<img>").addClass("card-text").attr("id", "img-" + i));
+    console.log(forecast[i].weather[0]);
+    debugger;
+    formatIcon(document.getElementById("img-" + i), forecast[i].weather[0]);
+    $("#card-body-" + i).append($("<p>").addClass("card-title").text("Temp: " + forecast[i].temp.max + '°F'));
+    $("#card-body-" + i).append($("<p>").addClass("card-title").text("Wind: " + forecast[i].wind_speed + " MPH"));
+    $("#card-body-" + i).append($("<p>").addClass("card-title").text("Humidity: " + forecast[i].humidity + " %"));
+  }
+  if (current.uvi <= 2) { curCond.uvFormat.classList.add("favorable"); return }
+  if (current.uvi <= 5) { curCond.uvFormat.classList.add("moderate"); return }
+  if (current.uvi > 5) { curCond.uvFormat.classList.add("severe"); return }
 }
 
 
 var formatIcon = function (elImg, weather) {
-  console.log(elImg, weather);
+  // console.log(elImg, weather);
+
   elImg.alt = weather.main;
   //http://openweathermap.org/img/wn/10d@2x.png
   elImg.src = "http://openweathermap.org/img/wn/" + weather.icon + "@2x.png";
+  elImg.width = "60";
+  elImg.height = "30";
 }
 
 var Cur_Unix_Date = function (t) {
