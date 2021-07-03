@@ -1,11 +1,12 @@
 /* variables */
 // If there is nothing in hourSave set hourSave to an empty array
+// debugger;
 var aCitySave = JSON.parse(localStorage.getItem('citySave')) || [];
 
 
 var userFormEl = document.querySelector("#user-form");
 var nameInputEl = document.querySelector("#userCity");
-var repoContainerEl = document.querySelector("#repos-container");
+// var repoContainerEl = document.querySelector("#history-container");
 // var repoSearchTerm = document.querySelector("#repo-search-term");
 var userCity = "";
 var curCond = {
@@ -28,21 +29,21 @@ var formSubmitHandler = function (event) {
     getUserWeather(userCity);
 
     // clear old content
-    repoContainerEl.textContent = "";
     nameInputEl.value = "";
   } else {
     alert("Please enter a city");
   }
 };
 
-//save to 5 recent searches to local storage
+//save to 10 recent searches to local storage
 var saveCity = function (city) {
-  if (aCitySave.includes(city)) {return};
-  if (aCitySave.length > 5) {
-      aCitySave.shift();
-    }
-    aCitySave.push(city)
-    localStorage.setItem("citySave", JSON.stringify(aCitySave));
+  if (aCitySave.includes(city)) { return };
+  if (aCitySave.length > 9) {
+    aCitySave.shift();
+  }
+  aCitySave.push(city)
+  localStorage.setItem("citySave", JSON.stringify(aCitySave));
+  loadBtn();
 }
 
 
@@ -88,7 +89,7 @@ var getonecall = function (lat, lon) {
       if (response.ok) {
         response.json().then(function (data) {
           loadUI(data.current, data.daily);
-          
+
         });
       } else {
         alert("Error: " + response.statusText);
@@ -112,11 +113,11 @@ var loadUI = function (current, forecast) {
 
   $("#5-day").empty();
   for (i = 0; i < 5; i++) {
-    
+
     $("#5-day").append($("<div>").addClass("sm-card col-lg-2").attr("id", "card-body-" + i));
     $("#card-body-" + i).append($("<h2>").addClass("card-title").text(Cur_Unix_Date(forecast[i].dt)));
     $("#card-body-" + i).append($("<img>").addClass("card-text mt").attr("id", "img-" + i));
-    
+
     formatIcon(document.getElementById("img-" + i), forecast[i].weather[0]);
     $("#card-body-" + i).append($("<p>").addClass("card-title").text("Temp: " + forecast[i].temp.max + ' °F'));
     $("#card-body-" + i).append($("<p>").addClass("card-title").text("Wind: " + forecast[i].wind_speed + " MPH"));
@@ -144,7 +145,15 @@ var Cur_Unix_Date = function (t) {
   return dt;
 }
 
+var loadBtn = function () {
+  $("#history-container").empty();
+  if (aCitySave) {
+    for (i = 0; i < aCitySave.length; i++) {
+      $("#history-container").append($("<button>").addClass("btn-back").text(aCitySave[i]));
+    }
+  }
+}
 
-
+loadBtn();
 // add event listeners to forms
 userFormEl.addEventListener("submit", formSubmitHandler);
