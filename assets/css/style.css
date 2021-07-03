@@ -11,6 +11,33 @@
   box-sizing: border-box;
 }
 
+img {
+  height: 30px;
+  width: 60px;
+  object-fit: cover
+}
+
+#curCityDate {
+  display: inline-block;
+}
+
+#uvFormat {
+  display: inline-block;
+  background-color: darkred;
+  color: white;
+  width: 40px;
+  font-size: 1em;
+  text-align: center;
+  margin: 0;
+  border-radius: 10%;
+}
+
+}
+
+#uvFormat p {
+  margin: 0;
+}
+
 body {
   /* background-color: var(--primary); */
   /* margin: 5px; */
@@ -85,7 +112,7 @@ p {
 }
 
 .btn-back:hover {
-  color:gray;
+  color: gray;
   /* background-color: var(--tertiary); */
   transform: translate(0, 0);
   box-shadow: 2px 2px var(--primary);
@@ -162,7 +189,6 @@ p {
   border: 3px solid #33475A;
   background-color: #33475A;
   color: #DDECEB;
-
   /* border-radius: var(--border-radius); */
 }
 
@@ -272,6 +298,7 @@ p {
 
 .col-1 {
   flex: 0 0 calc(100% * 1 / 12 - 2%);
+  display: inline-block;
 }
 
 .col-2 {
@@ -312,6 +339,7 @@ p {
 
 .col-11 {
   flex: 0 0 calc(100% * 11 / 12 - 2%);
+  display: inline-block;
 }
 
 .col-12 {

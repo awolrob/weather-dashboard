@@ -2,13 +2,21 @@ var userFormEl = document.querySelector("#user-form");
 var nameInputEl = document.querySelector("#userCity");
 var repoContainerEl = document.querySelector("#repos-container");
 // var repoSearchTerm = document.querySelector("#repo-search-term");
-
+var userCity = "";
+var curCond = {
+  curCityDate: document.getElementById("curCityDate"),
+  curIcon: document.getElementById("curIcon"),
+  curTemp: document.getElementById("curTemp"),
+  curWind: document.getElementById("curWind"),
+  curHum: document.getElementById("curHum"),
+  curUV: document.getElementById("uvFormat")
+}
 var formSubmitHandler = function (event) {
   // prevent page from refreshing
   event.preventDefault();
 
   // get value from input element
-  var userCity = nameInputEl.value.trim();
+  userCity = nameInputEl.value.trim();
 
   if (userCity) {
     getUserWeather(userCity);
@@ -36,12 +44,8 @@ var getUserWeather = function (inputCity) {
     .then(function (response) {
       // request was successful
       if (response.ok) {
-        // console.log(response);
         response.json().then(function (data) {
-          // debugger;
-          console.log(data);
-          // console.log(data.coord);
-          // displayRepos(data, user);
+          userCity = data.name;
           getonecall(data.coord.lat, data.coord.lon);
         });
       } else {
@@ -57,15 +61,15 @@ var getonecall = function (lat, lon) {
   var apiUrlonecall = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat +
     "&lon=" + lon +
     "&exclude=minutely,hourly,alerts" +
+    "&units=imperial" +
     "&appid=f0fb5a2fd74295d57b15c5c4bd25d82f";
 
   fetch(apiUrlonecall)
     .then(function (response) {
       // request was successful
       if (response.ok) {
-        console.log(response);
         response.json().then(function (data) {
-          console.log(data);
+          loadUI(data.current, data.daily);
         });
       } else {
         alert("Error: " + response.statusText);
@@ -77,6 +81,27 @@ var getonecall = function (lat, lon) {
 
 }
 
+var loadUI = function (current, forecast) {
+  curCond.curCityDate.textContent = userCity + " (" + Cur_Unix_Date(current.dt) + ")";
+  formatIcon(curCond.curIcon, current.weather[0]);
+  curCond.curTemp.innerHTML = "Temp: " + current.temp + '°F';
+  curCond.curWind.innerHTML = "Wind: " + current.wind_speed + " MPH";
+  curCond.curHum.innerHTML = "Humidity: " + current.humidity + " %";
+  curCond.curUV.innerHTML = current.uvi;
+}
+
+
+var formatIcon = function (elImg, weather) {
+  console.log(elImg, weather);
+  elImg.alt = weather.main;
+  //http://openweathermap.org/img/wn/10d@2x.png
+  elImg.src = "http://openweathermap.org/img/wn/" + weather.icon + "@2x.png";
+}
+
+var Cur_Unix_Date = function (t) {
+  var dt = new Date(t * 1000).toLocaleDateString();
+  return dt;
+}
 
 // var displayRepos = function (repos, searchTerm) {
 //   // check if api returned any repos

@@ -9,18 +9,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <script src="https://kit-pro.fontawesome.com/releases/v5.10.1/js/pro.min.js" data-auto-fetch-svg></script>
   <link rel="stylesheet" href="./assets/css/style.css" />
-  <title>Git it Done</title>
+  <title>Weather Dashboard</title>
 </head>
 
 <body class="flex-column min-100-vh">
   <header class="hero">
-    <!-- <h1 class="app-title"><i class="fab fa-github fa-fw" style="color: red;"></i> Git it Done!</h1> -->
     <h1 class="app-title"><i class="fad fa-sun fa-fw" style="color: yellow;"></i> Weather Dashboard</h1>
-    <!-- <p>Search for a GitHub user or click on a language to see a list of repositories and how many open issues they have! -->
-    <!-- <h1 class="app-title"><i class="fab fa-github fa-fw" style="color: red;"></i> Git it Done!</h1> -->
-    <!-- </p> -->
   </header>
-
 
   <main class="flex-row">
     <div class="col-xl-3 pd-rt">
@@ -34,11 +29,10 @@
       </form>
 
       <div class="col">
-        <!-- <div id="language-buttons" class="card-body"> -->
         <div id="repos-container" class="card-body">
-          <button data-language="javascript" class="btn-back">JavaScript</button>
-          <button data-language="html" class="btn-back">HTML</button>
-          <button data-language="css" class="btn-back">CSS</button>
+          <!-- <button data-language="javascript" class="btn-back">JavaScript</button> -->
+          <!-- <button data-language="html" class="btn-back">HTML</button> -->
+          <!-- <button data-language="css" class="btn-back">CSS</button> -->
         </div>
       </div>
     </div>
@@ -47,12 +41,17 @@
       <div class="flex-row">
         <div class="card col-12">
           <div class="card-body">
-            <h1 class="card-title">City Name (and date) <i class='fad fa-sun fa-pulse fa-spinner'
-                style="color: goldenrod;"></i></h1>
-            <p class="card-text">Temp: </p>
-            <p class="card-text">Wind: </p>
-            <p class="card-text">Humidity: </p>
-            <p class="card-text">UV Index: <i class='fad fa-sun fa-pulse fa-spinner' style="color: red;"></i></p>
+            <h1 class="card-title" id="curCityDate">City Name (and date)</h1>
+            <img id="curIcon" src='http://openweathermap.org/img/wn/10d@2x.png' />
+            <p class="card-text" id="curTemp">Temp: </p>
+            <p class="card-text" id="curWind">Wind: </p>
+            <p class="card-text" id="curHum">Humidity: </p>
+            <div class="col-1">
+              <p class="card-text" id="curUV">UV Index:</p>
+            </div>
+            <div class="col-11">
+              <p id="uvFormat" class="col-1">99</p>
+            </div>
           </div>
         </div>
         <div class="flex-row">
