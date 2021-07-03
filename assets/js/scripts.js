@@ -1,14 +1,11 @@
-/* variables */
+/* VARIABLES */
 // If there is nothing in hourSave set hourSave to an empty array
-// debugger;
 var aCitySave = JSON.parse(localStorage.getItem('citySave')) || [];
-
-
 var userFormEl = document.querySelector("#user-form");
 var nameInputEl = document.querySelector("#userCity");
-// var repoContainerEl = document.querySelector("#history-container");
-// var repoSearchTerm = document.querySelector("#repo-search-term");
+var histContainerEl = document.querySelector("#history-container");
 var userCity = "";
+
 var curCond = {
   curCityDate: document.getElementById("curCityDate"),
   curIcon: document.getElementById("curIcon"),
@@ -18,6 +15,9 @@ var curCond = {
   curUV: document.getElementById("curUV"),
   uvFormat: document.getElementById("uvFormat")
 }
+/* END VARIABLES */
+
+/* FUNCTIONS */
 var formSubmitHandler = function (event) {
   // prevent page from refreshing
   event.preventDefault();
@@ -35,6 +35,15 @@ var formSubmitHandler = function (event) {
   }
 };
 
+//Select History City when clicked
+var hstButtonClickHandler = function (event) {
+  // get the city text from the clicked element
+  if (event.target.className === "btn-back") {
+    userCity = event.target.innerText;
+    getUserWeather(userCity);
+  }
+};
+
 //save to 10 recent searches to local storage
 var saveCity = function (city) {
   if (aCitySave.includes(city)) { return };
@@ -46,9 +55,7 @@ var saveCity = function (city) {
   loadBtn();
 }
 
-
 var getUserWeather = function (inputCity) {
-  // format the github api url
   //Use older 'weather' call to get the weather details by city as required by user input requirements  
   //http://api.openweathermap.org/data/2.5/weather?q=dayton&appid=f0fb5a2fd74295d57b15c5c4bd25d82f
 
@@ -89,7 +96,6 @@ var getonecall = function (lat, lon) {
       if (response.ok) {
         response.json().then(function (data) {
           loadUI(data.current, data.daily);
-
         });
       } else {
         alert("Error: " + response.statusText);
@@ -98,7 +104,6 @@ var getonecall = function (lat, lon) {
     .catch(function (error) {
       alert("Unable to connect to Open Weather Map API One Call");
     });
-
 }
 
 var loadUI = function (current, forecast) {
@@ -129,10 +134,7 @@ var loadUI = function (current, forecast) {
   if (current.uvi > 5) { curCond.uvFormat.classList.add("severe"); return }
 }
 
-
 var formatIcon = function (elImg, weather) {
-  // console.log(elImg, weather);
-
   elImg.alt = weather.main;
   //http://openweathermap.org/img/wn/10d@2x.png
   elImg.src = "http://openweathermap.org/img/wn/" + weather.icon + "@2x.png";
@@ -153,7 +155,12 @@ var loadBtn = function () {
     }
   }
 }
+/* END FUNCTIONS */
 
+/* MAIN LOGIC */
 loadBtn();
-// add event listeners to forms
+if (aCitySave[0]) { getUserWeather(aCitySave[0]); };
+
+//event listeners
 userFormEl.addEventListener("submit", formSubmitHandler);
+histContainerEl.addEventListener("click", hstButtonClickHandler);
