@@ -1,7 +1,7 @@
 :root {
   --primary: #ccdad1;
-  --secondary: white;
-  --tertiary: white;
+  --secondary: #DDECEB;
+  --tertiary: #DDECEB;
   --light-dark: #5AA2EA;
   --dark: black;
   --border-radius: .5rem;
@@ -13,7 +13,7 @@
 
 body {
   /* background-color: var(--primary); */
-  margin: 0;
+  /* margin: 5px; */
   padding: 0;
   font-family: "IBM Plex Sans", sans-serif;
   color: var(--dark);
@@ -45,7 +45,7 @@ p {
   display: block;
   margin: 5px 0;
   border-radius: var(--border-radius);
-  color: whitesmoke;
+  color: #DDECEB;
   border: none;
   outline: none;
   background-color: var(--light-dark);
@@ -85,7 +85,7 @@ p {
 }
 
 .btn-back:hover {
-  color: whitesmoke;
+  color:gray;
   /* background-color: var(--tertiary); */
   transform: translate(0, 0);
   box-shadow: 2px 2px var(--primary);
@@ -97,7 +97,7 @@ p {
   /* For browsers that do not support gradients */
   /* background-color: red;  */
   background-image: linear-gradient(to right, #3B6CC1, #220354);
-  color: var(--primary);
+  color: #DDECEB;
   text-align: center;
 }
 
@@ -161,7 +161,7 @@ p {
   /* margin: 8px 0 20px 0; */
   border: 3px solid #33475A;
   background-color: #33475A;
-  color: white;
+  color: #DDECEB;
 
   /* border-radius: var(--border-radius); */
 }

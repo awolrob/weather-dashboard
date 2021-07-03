@@ -27,14 +27,15 @@
 
       <h3 class="card-header">Search for a City:</h3>
       <form id="user-form" class="card-body">
-        <label class="form-label" for="username"></label>
-        <input name="username" id="username" type="text" autofocus="true" class="form-input" placeholder="San Diego" />
+        <label class="form-label" for="userCity"></label>
+        <input name="userCity" id="userCity" type="text" autofocus="true" class="form-input" placeholder="San Diego" />
         <button type="submit" class="btn">Search <i class='fad fa-sun fa-pulse fa-spinner'
             style="color: yellow;"></i></button>
       </form>
 
       <div class="col">
-        <div id="language-buttons" class="card-body">
+        <!-- <div id="language-buttons" class="card-body"> -->
+        <div id="repos-container" class="card-body">
           <button data-language="javascript" class="btn-back">JavaScript</button>
           <button data-language="html" class="btn-back">HTML</button>
           <button data-language="css" class="btn-back">CSS</button>
@@ -55,7 +56,7 @@
           </div>
         </div>
         <div class="flex-row">
-          <h1>5-Day Forecast: <span id="repo-search-term"></span></h1>
+          <h1>5-Day Forecast:</h1>
         </div>
         <div class="col-12">
           <div class="flex-row  justify-space-between">
@@ -109,7 +110,7 @@
       </div>
   </main>
 
-  <script src="./assets/js/homepage.js"></script>
+  <script src="./assets/js/scripts.js"></script>
 </body>
 
 </html>
