@@ -62,7 +62,7 @@ var getUserWeather = function (inputCity) {
   //Use One Call to get the full weather details for required UI  
   //https://api.openweathermap.org/data/2.5/onecall?lat=39.7589&lon=-84.1916&exclude=minutely,hourly,alerts&appid=f0fb5a2fd74295d57b15c5c4bd25d82f
 
-  var apiUrlCity = "http://api.openweathermap.org/data/2.5/weather?q=" + inputCity + "&appid=f0fb5a2fd74295d57b15c5c4bd25d82f";
+  var apiUrlCity = "https://api.openweathermap.org/data/2.5/weather?q=" + inputCity + "&appid=f0fb5a2fd74295d57b15c5c4bd25d82f";
 
   // make a get request to url
   fetch(apiUrlCity)
