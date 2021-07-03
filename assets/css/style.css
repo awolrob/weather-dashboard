@@ -14,8 +14,14 @@
 img {
   /* height: 30px; */
   /* width: 60px; */
-  object-fit: cover
+  object-fit: cover;
+
 }
+
+.mt {
+  margin-top: 1.25em;
+}
+
 
 #curCityDate {
   display: inline-block;

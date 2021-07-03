@@ -1,3 +1,8 @@
+/* variables */
+// If there is nothing in hourSave set hourSave to an empty array
+var aCitySave = JSON.parse(localStorage.getItem('citySave')) || [];
+
+
 var userFormEl = document.querySelector("#user-form");
 var nameInputEl = document.querySelector("#userCity");
 var repoContainerEl = document.querySelector("#repos-container");
@@ -30,6 +35,17 @@ var formSubmitHandler = function (event) {
   }
 };
 
+//save to 5 recent searches to local storage
+var saveCity = function (city) {
+  if (aCitySave.includes(city)) {return};
+  if (aCitySave.length > 5) {
+      aCitySave.shift();
+    }
+    aCitySave.push(city)
+    localStorage.setItem("citySave", JSON.stringify(aCitySave));
+}
+
+
 var getUserWeather = function (inputCity) {
   // format the github api url
   //Use older 'weather' call to get the weather details by city as required by user input requirements  
@@ -47,6 +63,7 @@ var getUserWeather = function (inputCity) {
       if (response.ok) {
         response.json().then(function (data) {
           userCity = data.name;
+          saveCity(userCity)
           getonecall(data.coord.lat, data.coord.lon);
         });
       } else {
@@ -71,13 +88,14 @@ var getonecall = function (lat, lon) {
       if (response.ok) {
         response.json().then(function (data) {
           loadUI(data.current, data.daily);
+          
         });
       } else {
         alert("Error: " + response.statusText);
       }
     })
     .catch(function (error) {
-      alert("Unable to connect to Open Weather Map API");
+      alert("Unable to connect to Open Weather Map API One Call");
     });
 
 }
@@ -85,25 +103,26 @@ var getonecall = function (lat, lon) {
 var loadUI = function (current, forecast) {
   curCond.curCityDate.textContent = userCity + " (" + Cur_Unix_Date(current.dt) + ")";
   formatIcon(curCond.curIcon, current.weather[0]);
-  curCond.curTemp.innerHTML = "Temp: " + current.temp + '°F';
+  curCond.curTemp.innerHTML = "Temp: " + current.temp + ' °F';
   curCond.curWind.innerHTML = "Wind: " + current.wind_speed + " MPH";
   curCond.curHum.innerHTML = "Humidity: " + current.humidity + " %";
   curCond.curUV.innerHTML = "UV Index: ";
   curCond.uvFormat.innerHTML = current.uvi;
   curCond.uvFormat.classList.remove("favorable", "moderate", "severe");
 
+  $("#5-day").empty();
   for (i = 0; i < 5; i++) {
-    console.log(forecast[i]);
+    
     $("#5-day").append($("<div>").addClass("sm-card col-lg-2").attr("id", "card-body-" + i));
     $("#card-body-" + i).append($("<h2>").addClass("card-title").text(Cur_Unix_Date(forecast[i].dt)));
-    $("#card-body-" + i).append($("<img>").addClass("card-text").attr("id", "img-" + i));
-    console.log(forecast[i].weather[0]);
-    debugger;
+    $("#card-body-" + i).append($("<img>").addClass("card-text mt").attr("id", "img-" + i));
+    
     formatIcon(document.getElementById("img-" + i), forecast[i].weather[0]);
-    $("#card-body-" + i).append($("<p>").addClass("card-title").text("Temp: " + forecast[i].temp.max + '°F'));
+    $("#card-body-" + i).append($("<p>").addClass("card-title").text("Temp: " + forecast[i].temp.max + ' °F'));
     $("#card-body-" + i).append($("<p>").addClass("card-title").text("Wind: " + forecast[i].wind_speed + " MPH"));
     $("#card-body-" + i).append($("<p>").addClass("card-title").text("Humidity: " + forecast[i].humidity + " %"));
   }
+
   if (current.uvi <= 2) { curCond.uvFormat.classList.add("favorable"); return }
   if (current.uvi <= 5) { curCond.uvFormat.classList.add("moderate"); return }
   if (current.uvi > 5) { curCond.uvFormat.classList.add("severe"); return }
@@ -125,55 +144,7 @@ var Cur_Unix_Date = function (t) {
   return dt;
 }
 
-// var displayRepos = function (repos, searchTerm) {
-//   // check if api returned any repos
-//   if (repos.length === 0) {
-//     repoContainerEl.textContent = "No repositories found.";
-//     return;
-//   }
-//   // create a link for each repo
-//   var repoEl = document.createElement("a");
-//   repoEl.classList = "list-item flex-row justify-space-between align-center";
-//   repoEl.setAttribute("href", "./single-repo.html?repo=" + repoName);
-//   repoSearchTerm.textContent = searchTerm;
 
-//   // loop over repos
-//   for (var i = 0; i < repos.length; i++) {
-//     // format repo name
-//     var repoName = repos[i].owner.login + "/" + repos[i].name;
-
-//     // create a container for each repo
-//     var repoEl = document.createElement("a");
-//     repoEl.classList = "list-item flex-row justify-space-between align-center";
-//     repoEl.setAttribute("href", "./single-repo.html");
-
-
-//     // create a span element to hold repository name
-//     var titleEl = document.createElement("span");
-//     titleEl.textContent = repoName;
-
-//     // append to container
-//     repoEl.appendChild(titleEl);
-
-//     // create a status element
-//     var statusEl = document.createElement("span");
-//     statusEl.classList = "flex-row align-center";
-
-//     // check if current repo has issues or not
-//     if (repos[i].open_issues_count > 0) {
-//       statusEl.innerHTML =
-//         "<i class='fas fa-times status-icon icon-danger'></i>" + repos[i].open_issues_count + " issue(s)";
-//     } else {
-//       statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
-//     }
-
-//     // append to container
-//     repoEl.appendChild(statusEl);
-
-//     // append container to the dom
-//     repoContainerEl.appendChild(repoEl);
-//   }
-// };
 
 // add event listeners to forms
 userFormEl.addEventListener("submit", formSubmitHandler);

@@ -31,6 +31,7 @@ THEN I am again presented with current and future conditions for that city
 REF: https://www.w3resource.com/javascript-exercises/javascript-date-exercise-17.php
 REF: https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript
 REF: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString
+REF: https://www.epa.gov/sites/production/files/documents/uviguide.pdf
 
 The following image demonstrates the application functionality:
 
