@@ -112,9 +112,16 @@ var loadUI = function (current, forecast) {
   curCond.curTemp.innerHTML = "Temp: " + current.temp + ' °F';
   curCond.curWind.innerHTML = "Wind: " + current.wind_speed + " MPH";
   curCond.curHum.innerHTML = "Humidity: " + current.humidity + " %";
-  curCond.curUV.innerHTML = "UV Index: ";
-  curCond.uvFormat.innerHTML = current.uvi;
-  curCond.uvFormat.classList.remove("favorable", "moderate", "severe");
+
+  var uvClass = "Class='severe'>";
+  if (current.uvi <= 2) {
+    uvClass = "Class='favorable'>"
+  }
+  else if (current.uvi <= 5) {
+    uvClass = "Class='moderate'>"
+  }
+  var uvHTML = "UV Index:  <span id='uvFormat'  " + uvClass+current.uvi + " </span>";
+  curCond.curUV.innerHTML = uvHTML;
 
   $("#5-day").empty();
   for (i = 0; i < 5; i++) {
@@ -128,10 +135,6 @@ var loadUI = function (current, forecast) {
     $("#card-body-" + i).append($("<p>").addClass("card-title").text("Wind: " + forecast[i].wind_speed + " MPH"));
     $("#card-body-" + i).append($("<p>").addClass("card-title").text("Humidity: " + forecast[i].humidity + " %"));
   }
-
-  if (current.uvi <= 2) { curCond.uvFormat.classList.add("favorable"); return }
-  if (current.uvi <= 5) { curCond.uvFormat.classList.add("moderate"); return }
-  if (current.uvi > 5) { curCond.uvFormat.classList.add("severe"); return }
 }
 
 var formatIcon = function (elImg, weather) {
