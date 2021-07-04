@@ -1,18 +1,18 @@
-# 06 Server-Side APIs: Weather Dashboard
+# CWRU Cooding Bootcamp 6. Server-Side APIs: Weather Dashboard
 
-Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+## PURPOSE: Build a weather dashboard for travelers that will run in the browser and to display weather at selected citys.
 
-Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) to retrieve weather data for cities. Read through the documentation for setup and usage instructions. You will use `localStorage` to store any persistent data.
+** **
+Open [index.html](./index.html) in your browser to view the updated landing page.
+   - Source: [Github](https://github.com/awolrob/weather-dashboard)
+   - Published Site: [Live URL](https://awolrob.github.io/weather-dashboard/)
+** **
 
-## User Story
+I will use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) to retrieve weather data for cities. Read through the documentation for setup and usage instructions. I will use `localStorage` to store any persistent data.
 
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
-```
-
-## Acceptance Criteria
+## A traveler I WANT to see the weather outlook for multiple cities SO THAT I can plan a trip accordingly
+** **
+## Acceptance Criteria is as follows:
 
 ```
 GIVEN a weather dashboard with form inputs
@@ -28,22 +28,24 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 ```
 
+```
+REF: CWRU Module 6 git it done was used as the base code for this assignment
+```
+```
 REF: https://www.w3resource.com/javascript-exercises/javascript-date-exercise-17.php
+```
+```
 REF: https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript
+```
+```
 REF: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString
+```
+```
 REF: https://www.epa.gov/sites/production/files/documents/uviguide.pdf
+```
 
-The following image demonstrates the application functionality:
-
-![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+**The application should function as follows:**
+![weather dashboard demo](./assets/images/06-server-side-apis-homework-demo.png)
 
 - - -
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+` https://github.com/awolrob | 2021-06-19 `
