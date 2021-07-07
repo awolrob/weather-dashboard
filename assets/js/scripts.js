@@ -140,7 +140,7 @@ var loadUI = function (current, forecast) {
 var formatIcon = function (elImg, weather) {
   elImg.alt = weather.main;
   //http://openweathermap.org/img/wn/10d@2x.png
-  elImg.src = "http://openweathermap.org/img/wn/" + weather.icon + "@2x.png";
+  elImg.src = "https://openweathermap.org/img/wn/" + weather.icon + "@2x.png";
   elImg.width = "60";
   elImg.height = "30";
 }
